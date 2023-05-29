@@ -18,6 +18,9 @@ export default class Magician extends Character {
   }
 
   set attack(obj) {
+    if (!obj.attack || !obj.position) {
+      throw new Error('В объект не задана атака и/или позиция героя');
+    }
     if (typeof obj.attack !== 'number') {
       throw new Error('Значение атаки должно быть числом');
     }

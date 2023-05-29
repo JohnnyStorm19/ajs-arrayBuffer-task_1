@@ -80,7 +80,21 @@ test('Выбрасывается ошибка при нечисловом зна
   expect(() => {
     const value = '100';
     const diablo = new Daemon('Diablo');
-    diablo.attack = { positioin: 5, attack: value };
+    diablo.attack = { position: 5, attack: value };
+  }).toThrow(error);
+});
+test('Выбрасывается ошибка при отсутствии в объекте значений атаки и/или позиции героя', () => {
+  const error = 'В объект не задана атака и/или позиция героя';
+  expect(() => {
+    const diablo = new Daemon('Diablo');
+    diablo.attack = { position: 5 };
+  }).toThrow(error);
+});
+test('Выбрасывается ошибка,если задан пустой объект', () => {
+  const error = 'В объект не задана атака и/или позиция героя';
+  expect(() => {
+    const diablo = new Daemon('Diablo');
+    diablo.attack = {};
   }).toThrow(error);
 });
 
