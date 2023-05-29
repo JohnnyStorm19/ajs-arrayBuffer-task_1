@@ -7,6 +7,7 @@ export default class Magician extends Character {
     this.type = 'Magician';
     this._attack = 100;
     this.defence = 40;
+    this.position = 1;
   }
 
   set stoned(state) {
@@ -17,6 +18,14 @@ export default class Magician extends Character {
     return this._stoned;
   }
 
+  set position(num) {
+    this._position = num;
+  }
+
+  get position() {
+    return this._position;
+  }
+
   set attack(obj) {
     if (!obj.attack || !obj.position) {
       throw new Error('В объект не задана атака и/или позиция героя');
@@ -24,20 +33,20 @@ export default class Magician extends Character {
     if (typeof obj.attack !== 'number') {
       throw new Error('Значение атаки должно быть числом');
     }
-    this.position = obj.position;
+    this._position = obj.position;
     this._attack = obj.attack;
   }
 
   get attack() {
     if (!this._stoned) {
-      this._attack = Math.round(this._attack - (this._attack / 10) * (this.position - 1));
+      this._attack = Math.round(this._attack - (this._attack / 10) * (this._position - 1));
       if (this._attack < 0) {
         this._attack = 0;
       }
       return this._attack;
     }
-    this._attack = Math.round(this._attack - (this._attack / 10) * (this.position - 1));
-    this._attack -= Math.round(Math.log2(this.position) * 5);
+    this._attack = Math.round(this._attack - (this._attack / 10) * (this._position - 1));
+    this._attack -= Math.round(Math.log2(this._position) * 5);
     if (this._attack < 0) {
       this._attack = 0;
     }

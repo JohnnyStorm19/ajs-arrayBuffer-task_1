@@ -9,5 +9,6 @@ export default class Daemon extends Magician {
     this.type = 'Daemon';
     this._attack = 110;
     this.defence = 30;
+    this.position = 1;
   }
 }

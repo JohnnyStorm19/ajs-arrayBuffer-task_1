@@ -29,6 +29,7 @@ test('Создается инстанс класса Magician', () => {
     type: 'Magician',
     _attack: 100,
     defence: 40,
+    _position: 1,
   };
   expect(merlin).toEqual(res);
 });
@@ -42,6 +43,7 @@ test('Возвращается геттер свойства stoned класса
     type: 'Magician',
     _attack: 100,
     defence: 40,
+    _position: 1,
   };
   const boolean = true;
   merlin.stoned = boolean;
@@ -57,6 +59,7 @@ test('Создается инстанс класса Daemon', () => {
     type: 'Daemon',
     _attack: 110,
     defence: 30,
+    _position: 1,
   };
   expect(diablo).toEqual(res);
 });
@@ -70,6 +73,7 @@ test('Возвращается геттер свойства stoned класса
     type: 'Daemon',
     _attack: 110,
     defence: 50,
+    _position: 1,
   };
   const boolean = true;
   diablo.stoned = boolean;
