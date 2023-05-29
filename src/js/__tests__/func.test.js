@@ -49,6 +49,22 @@ test('Возвращается геттер свойства stoned класса
   merlin.stoned = boolean;
   expect(merlin.stoned).toEqual(boolean);
 });
+test('Возвращается геттер свойства position класса Magician', () => {
+  const merlin = new Magician('Merlin');
+  const res = {
+    name: 'Merlin',
+    health: 100,
+    level: 1,
+    _stoned: false,
+    type: 'Magician',
+    _attack: 100,
+    defence: 40,
+    _position: 1,
+  };
+  const distance = 2;
+  merlin.position = distance;
+  expect(merlin.position).toBe(distance);
+});
 test('Создается инстанс класса Daemon', () => {
   const diablo = new Daemon('Diablo');
   const res = {
