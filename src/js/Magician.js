@@ -18,22 +18,26 @@ export default class Magician extends Character {
   }
 
   set attack(obj) {
+    if (typeof obj.attack !== 'number') {
+      throw new Error('Значение атаки должно быть числом');
+    }
     this.position = obj.position;
+    this._attack = obj.attack;
+  }
+
+  get attack() {
     if (!this._stoned) {
       this._attack = Math.round(this._attack - (this._attack / 10) * (this.position - 1));
       if (this._attack < 0) {
         this._attack = 0;
       }
-      return;
+      return this._attack;
     }
     this._attack = Math.round(this._attack - (this._attack / 10) * (this.position - 1));
     this._attack -= Math.round(Math.log2(this.position) * 5);
     if (this._attack < 0) {
       this._attack = 0;
     }
-  }
-
-  get attack() {
     return this._attack;
   }
 }
